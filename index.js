@@ -10,12 +10,7 @@ require('./models/')(wagner,'mongodb://localhost:27017/app');
 var app = express();
 app.use(require("helmet")());
 
-// temporary patch instead of login api
-app.use(wagner.invoke(function(User) {
-  return function(req, res, next) {
-    User.findOne({}, function(error, user) { req.user = user; next(); });
-  };
-}));
+wagner.invoke(require('./auth'), { app: app });
 
 app.use('/api/v1', require('./apis/')(wagner));
 
