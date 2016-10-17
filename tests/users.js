@@ -17,6 +17,7 @@ module.exports = function(wagner){
       });
       it('can save users cart', function(done) {
         var url = URL_ROOT + '/api/v1/user/me/cart';
+        
         superagent.
           put(url).
           send({
@@ -59,6 +60,55 @@ module.exports = function(wagner){
               assert.equal(result.data.cart[0].quantity, 1);
               done();
             });
+          });
+        });
+      });
+      
+      it('can check out', function(done){
+        var url = URL_ROOT+'/api/v1/user/checkout';
+        
+        User.findOne({}, function(error, user) {
+          assert.ifError(error);
+          user.data.cart = [{ product: id, quantity: 1 }];
+          user.save(function(error) {
+            assert.ifError(error);
+    
+            // Attempt to check out by posting to /api/v1/checkout
+            superagent.
+              post(url).
+              send({
+                // Fake stripe credentials. stripeToken can either be
+                // real credit card credentials or an encrypted token -
+                // in production it will be an encrypted token.
+                stripeToken: {
+                  number: '4242424242424242',
+                  cvc: '123',
+                  exp_month: '12',
+                  exp_year: '2016'
+                }
+              }).
+              end(wagner.invoke(function(Stripe){
+                return function(error, res) {
+                  assert.ifError(error);
+      
+                  assert.equal(res.status, 200);
+                  var result;
+                  assert.doesNotThrow(function() {
+                    result = JSON.parse(res.text);
+                  });
+      
+                  // API call gives us back a charge id.
+                  assert.ok(result.id);
+      
+                  // Make sure stripe got the id
+                  Stripe.charges.retrieve(result.id, function(error, charge) {
+                    assert.ifError(error);
+                    assert.ok(charge);
+                    assert.equal(charge.amount, 300 * 100); // 300 USD
+                    done();
+                  });
+                };
+              }));
           });
         });
       });
