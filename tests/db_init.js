@@ -10,8 +10,8 @@ var products = [
     name: 'LG G4',
     category: { _id: 'Phones', ancestors: ['Electronics', 'Phones'] },
     price: {
-      amount: 300,
-      currency: 'USD'
+      amount: 200,
+      currency: 'GBP'
     }
   },
   {

@@ -49,8 +49,8 @@ module.exports = function(wagner){
             });
             assert.equal(result.products.length, 2);
             // Should be in ascending order by name
-            assert.equal(result.products[0].name, 'LG G4');
-            assert.equal(result.products[1].name, 'Asus Zenbook Prime');
+            assert.equal(result.products[0].name, 'LG G4', 'first');
+            assert.equal(result.products[1].name, 'Asus Zenbook Prime', 'second');
             done();
           });
         });

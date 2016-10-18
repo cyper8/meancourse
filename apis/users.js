@@ -55,7 +55,7 @@ module.exports = function(wagner) {
         // Sum up the total price in USD
         var totalCostUSD = 0;
         _.each(user.data.cart, function(item) {
-          totalCostUSD += item.product.internal.approximatePriceUSD *
+          totalCostUSD += item.product.chargePriceUSD *
             item.quantity;
         });
 

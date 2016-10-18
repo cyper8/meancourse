@@ -10,9 +10,9 @@ var productSchema = {
     amount: {
       type: Number,
       required: true,
-      set: function(v) {
-        this.internal.approximatePriceUSD =
-          v / (fx()[this.price.currency] || 1);
+      set: function(v){
+        this.internal.approximatePriceUSD = 
+          v / fx()[this.price.currency];
         return v;
       }
     },
@@ -21,9 +21,9 @@ var productSchema = {
       type: String,
       enum: ['USD', 'EUR', 'GBP'],
       required: true,
-      set: function(v) {
-        this.internal.approximatePriceUSD =
-          this.price.amount / (fx()[v] || 1);
+      set: function(v){
+        this.internal.approximatePriceUSD = 
+          this.price.amount / fx()[v];
         return v;
       }
     }
@@ -49,8 +49,13 @@ var currencySymbols = {
  * than "25 USD"
  */
 schema.virtual('displayPrice').get(function() {
-  return currencySymbols[this.price.currency] +
-    '' + this.price.amount;
+  return (currencySymbols[this.price.currency])?
+    (currencySymbols[this.price.currency] + '' + this.price.amount):
+    (this.price.amount + ' ' + this.price.currency);
+});
+
+schema.virtual('chargePriceUSD').get(function(){
+  return (this.price.amount / fx()[this.price.currency]).toFixed(2);
 });
 
 schema.set('toObject', { virtuals: true });
