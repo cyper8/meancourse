@@ -45,6 +45,7 @@ var users = [{
   }
 }];
 
+require("./libs")(wagner);
 var models = require("./models")(wagner,'mongodb://localhost:27017/app');
 
 // wipe models

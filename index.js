@@ -5,6 +5,7 @@ const ROOT_URL='https://'+IP+':'+PORT;
 var express = require('express');
 var wagner = require('wagner-core');
 
+require('./libs')(wagner);
 require('./models/')(wagner,'mongodb://localhost:27017/app');
 
 var app = express();

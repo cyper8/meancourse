@@ -6,6 +6,7 @@ var wagner = require('wagner-core');
 
 var app,server;
 
+require("../libs")(wagner);
 require('../models')(wagner,'mongodb://localhost:27017/test');
 app = express();
 
