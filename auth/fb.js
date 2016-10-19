@@ -1,3 +1,5 @@
+const Config = require("../config.json");
+
 var FacebookStrategy = require('passport-facebook').Strategy;
 
 module.exports = function(User){
@@ -5,8 +7,8 @@ module.exports = function(User){
     name: 'facebook',
     strategy: new FacebookStrategy(
       {
-        clientID: process.env.ID,
-        clientSecret: process.env.SEC,
+        clientID: Config.FB_ID,
+        clientSecret: Config.FB_SECRET,
         callbackURL: 'https://mean-cyper8.c9users.io/auth/facebook/callback',
         profileFields: ['email']
       },

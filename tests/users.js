@@ -74,9 +74,9 @@ module.exports = function(wagner){
             assert.ifError(error);
     
             // Attempt to check out by posting to /api/v1/checkout
-            superagent.
-              post(url).
-              send({
+            superagent
+              .post(url)
+              .send({
                 // Fake stripe credentials. stripeToken can either be
                 // real credit card credentials or an encrypted token -
                 // in production it will be an encrypted token.
@@ -86,8 +86,8 @@ module.exports = function(wagner){
                   exp_month: '12',
                   exp_year: '2016'
                 }
-              }).
-              end(wagner.invoke(function(Stripe){
+              })
+              .end(wagner.invoke(function(Stripe){
                 return function(error, res) {
                   assert.ifError(error);
       

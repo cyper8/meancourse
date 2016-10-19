@@ -1,3 +1,5 @@
+const Config=require("../config.json");
+
 var _ = require("underscore");
 
 module.exports = function(wagner) {
@@ -5,7 +7,7 @@ module.exports = function(wagner) {
   var libs = {
 
     // Stripe API
-    Stripe: require("stripe")(process.env.STRIPE),
+    Stripe: require("stripe")(Config.STRIPE),
     
     // Fixer.io API
     Fx: require("./fx")
