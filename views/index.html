@@ -8,11 +8,16 @@
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
 	<script type="text/javascript" src="/app.js"></script>
 	<script type="text/javascript" src="/users/user-menu.js"></script>
+	<link ref="stylesheet" type="text/css" href="/styles/main.css" />
+	<link ref="stylesheet" type="text/css" href="/styles/users.css" />
 </head>
 <body>
-	<div ng-controller="UsersController">
-		<user-menu></user-menu>
-	</div>
+	<header class="nav-bar">
+		<div class="logo">Retail</div>
+		<div class="user-tray" ng-controller="UsersController">
+			<user-menu></user-menu>
+		</div>
+	</header>
 	<div ng-view></div>
 </body>
 </html>

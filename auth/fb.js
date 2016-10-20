@@ -22,7 +22,7 @@ module.exports = function(User){
           {
             $set: {
               'profile.username': profile.emails[0].value,
-              'profile.picture': 'http://graph.facebook.com/' +
+              'profile.picture': 'https://graph.facebook.com/' +
                 profile.id.toString() + '/picture?type=large'
             }
           },
@@ -39,14 +39,15 @@ module.exports = function(User){
         options: {
           scope: ['email']
         },
-        callback: function(req, res){req.session.referer = req.get('referer');} //never used 'cause of redirect
+        callback: function(){} //never used 'cause of redirect
       },
       callback: {
         type: 'get',
         path: 'facebook/callback',
         options: { failureRedirect: '/fail' },
         callback: function(req, res) {
-          res.redirect(req.session.referer);
+          req.query = "";
+          res.redirect('back');
         }
       }
     }

@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Tahoma, sans-serif;
+  font-size: 12pt;
+}
+
+body: {
+  background-color: snow;
+  
+}
+
+header: {
+  display: block;
+  height: 6rem;
+  position: fixed;
+  background-color: #bcbcb0;
+}
+
+.logo {
+  height: 100%;
+  font-family: Tahoma, sans-serif;
+  font-size: 5rem;
+  text-decoration: underline;
+  line-height: 6rem;
+  font-variant: small-caps;
+  font-weight: lighter;
+  color: #303030;
+}
+
+header > .logo {
+  float: left;
+}
+
+.user-tray {
+  height: 100%;
+  font-size: 0.9rem;
+}
+
+header > .user-tray{
+  float: right;
+}

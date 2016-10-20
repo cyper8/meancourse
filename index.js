@@ -2,7 +2,7 @@ const IP=process.env.IP;
 const PORT=process.env.PORT;
 const ROOT_URL='https://'+IP+':'+PORT;
 
-var staticMaxAge = 4*60*60*1000;
+var staticMaxAge = 1000;//4*60*60*1000;
 
 var express = require('express');
 var wagner = require('wagner-core');
