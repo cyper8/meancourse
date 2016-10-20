@@ -4,9 +4,15 @@
 	<title>App</title>
 	<script type="text/javascript"
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
-	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" 
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+	<script type="text/javascript" src="/app.js"></script>
+	<script type="text/javascript" src="/users/user-menu.js"></script>
 </head>
 <body>
-
+	<div ng-controller="UsersController">
+		<user-menu></user-menu>
+	</div>
+	<div ng-view></div>
 </body>
 </html>

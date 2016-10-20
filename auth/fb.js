@@ -39,14 +39,14 @@ module.exports = function(User){
         options: {
           scope: ['email']
         },
-        callback: function(){} //never used 'cause of redirect
+        callback: function(req, res){req.session.referer = req.get('referer');} //never used 'cause of redirect
       },
       callback: {
         type: 'get',
         path: 'facebook/callback',
         options: { failureRedirect: '/fail' },
         callback: function(req, res) {
-          res.send('Welcome, ' + req.user.profile.username);
+          res.redirect(req.session.referer);
         }
       }
     }
