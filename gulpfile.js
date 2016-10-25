@@ -16,6 +16,6 @@ gulp.task('browserifyTests',function(){
 });
 
 gulp.task('watch', function() {
-  gulp.watch(['./frontend/app.js', './frontend/routes.js', './frontend/!(js|styles|templates)/*.js'], ['browserify']);
+  gulp.watch(['./frontend/*.js'], ['browserify']);
   gulp.watch(['./frontend/tests/*.js'], ['browserifyTests']);
 });

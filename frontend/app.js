@@ -1,35 +1,13 @@
-var controllers = require("./controllers");
-var elements = require("./elements");
-var services = require("./services");
-var routes = require("./routes");
-var _ = require("underscore");
-
 var app = angular.module('myApp',['ng', 'ngRoute']);
 
 // app.config(function($httpProvider){
 //   $httpProvider.interceptors.push('$fbCleaner');
 // });
 
-_.each(routes, function(router, route){
-  app.config(function($routeProvider){
-    $routeProvider
-    .when(route,router);
-  });
-});
+require("./routes")(app);
 
-app.config(function($routeProvider){
-  $routeProvider
-  .otherwise("/");
-});
+require("./controllers")(app);
 
-_.each(controllers, function(controller, name){
-  app.controller(name, controller);
-});
+require("./elements")(app);
 
-_.each(elements, function(element, name){
-  app.directive(name, element);
-});
-
-_.each(services, function(service, name){
-  app.factory(name, service);
-});
+require("./services")(app);
