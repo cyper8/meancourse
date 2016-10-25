@@ -1,8 +1,6 @@
 module.exports = function (User, app) {
-  var _ = require("underscore");
   var session = require("express-session");
   var passport = require('passport');
-  var auth = [];
 
   var store = new (require("connect-mongodb-session")(session))({
     uri: 'mongodb://localhost:27017/app',
@@ -32,28 +30,9 @@ module.exports = function (User, app) {
 
 
 
-  // Import Strategies
-  auth.push(require('./fb')(User));
+  // Facebook Auth
+  require('./fb')(User, app, passport);
   // ...
-
-
-
-  // mount strategies onto passport
-  auth.forEach(function(e,i,a){
-    passport.use(e.strategy);
-  });
   
-  // initialize passport
-  app.use(passport.initialize());
-  app.use(passport.session());
-
-  // setup login endpoints
-  auth.forEach(function(e,i,a){
-    _.forEach(e.routes, function(v,k){
-      app[v.type]('/auth/'+v.path,
-        passport.authenticate(e.name, v.options),
-        v.callback);
-    });
-  });
   return app;
 };

@@ -7,15 +7,18 @@
   font-size: 12pt;
 }
 
-body: {
+body {
   background-color: snow;
-  
+  margin-top: 6rem;
 }
 
-header: {
+header {
   display: block;
   height: 6rem;
   position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
   background-color: #bcbcb0;
 }
 
@@ -28,6 +31,10 @@ header: {
   font-variant: small-caps;
   font-weight: lighter;
   color: #303030;
+}
+
+header > * {
+  display: inline-block;
 }
 
 header > .logo {

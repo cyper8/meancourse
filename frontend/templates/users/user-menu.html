@@ -1,0 +1,10 @@
+<div class="current-user" ng-show="user" data-username="{{user.profile.username}}">
+  <a class="profile" href="#profile">
+    <img class="avatar" ng-src="{{user.profile.picture}}" />
+  </a>
+</div>
+<div class="login" ng-show="!user">
+  <a class="login" id="facebook" href="/auth/facebook">
+    Log In
+  </a>
+</div>

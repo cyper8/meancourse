@@ -5,10 +5,9 @@ module.exports = function(config) {
       'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.js',
       // For ngMockE2E
       'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-mocks.js',
-      'app.js',
-      'users/user-menu.js',
-      'tests/users.js',
-      { pattern: './views/*.html', included: false, served: true }
+      'js/app.js',
+      'js/test/index.js',
+      { pattern: './templates/*.html', included: false, served: true }
     ],
     frameworks: ['mocha', 'chai'],
     browsers: ['Chrome'],

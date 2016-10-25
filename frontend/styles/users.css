@@ -1,17 +1,18 @@
 user-menu {
-  
+  height: 100%;
 }
 
 .current-user {
-  
+  font-size:0.9rem;
 }
 
 img.avatar {
-  
+  border-radius: 50%;
+  vertical-align: middle;
 }
 
-.current-user > img.avatar {
-  
+.current-user img.avatar {
+  height: 2.5em;
 }
 
 .login {

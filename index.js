@@ -17,8 +17,9 @@ wagner.invoke(require('./auth'), { app: app });
 
 app.use('/api/v1', require('./apis/')(wagner));
 
-app.use(express.static('controllers', {maxAge: staticMaxAge}));
-app.use(express.static('views', {maxAge: staticMaxAge}));
+app.use(express.static('frontend/styles', {maxAge: staticMaxAge}));
+app.use(express.static('frontend/js', {maxAge: staticMaxAge}));
+app.use(express.static('frontend/templates', {maxAge: staticMaxAge}));
 
 app.listen(PORT,IP);
 console.log('Listening on '+ROOT_URL);

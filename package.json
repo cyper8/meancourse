@@ -29,6 +29,8 @@
   },
   "scripts": {
     "test": "mocha tests/",
-    "karma": "node_modules/karma/bin/karma start ./karma.local.conf.js"
+    "karma": "gulp browserifyTests && node_modules/karma/bin/karma start ./karma.local.conf.js",
+    "watch": "gulp watch",
+    "make": "gulp browserify"
   }
 }
