@@ -1,6 +1,6 @@
-const IP=process.env.IP;
-const PORT=process.env.PORT;
-const ROOT_URL='https://'+IP+':'+PORT;
+const IP=process.env.IP||"127.0.0.1";
+const PORT=process.env.PORT||3000;
+const ROOT_URL='https://'+(process.env.C9_HOSTNAME?process.env.C9_HOSTNAME:("localhost:"+PORT));
 
 var staticMaxAge = 1000;//4*60*60*1000;
 
